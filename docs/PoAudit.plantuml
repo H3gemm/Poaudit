@@ -1,0 +1,58 @@
+@startuml ПО_Аудит Use Case
+left to right direction
+
+actor "Пользователь" as User
+actor "Администратор" as Admin
+
+rectangle "ПО_Аудит" {
+
+    usecase "Регистрация" as UC_Register
+
+    usecase "Вход в систему" as UC_LoginUser
+    usecase "Вход в систему" as UC_LoginAdmin
+
+    usecase "Добавление администратора" as UC_CreateAdmin
+
+    usecase "Просмотр списка ПО" as UC_ViewSoftList
+    usecase "Просмотр информации о ПО" as UC_ViewSoft
+    usecase "Поиск ПО" as UC_SearchSoft
+    usecase "Добавление ПО" as UC_AddSoft
+    usecase "Удаление ПО" as UC_DeleteSoft
+
+    usecase "Добавление ПК" as UC_AddPC
+    usecase "Удаление ПК" as UC_DeletePC
+    usecase "Просмотр списка ПК" as UC_ViewPCList
+
+    usecase "Подача заявки" as UC_AddReq
+    usecase "Отмена заявки" as UC_CancelReq
+    usecase "Просмотр статуса заявок" as UC_ViewReqs
+    usecase "Принять заявку" as UC_AcceptReq
+    usecase "Отклонить заявку" as UC_RejectReq
+
+}
+
+User -- UC_Register
+
+User -- UC_LoginUser
+Admin -- UC_LoginAdmin
+
+UC_LoginUser -- UC_ViewSoftList
+UC_LoginUser -- UC_ViewSoft
+UC_LoginUser -- UC_SearchSoft
+UC_LoginUser -- UC_AddReq
+UC_LoginUser -- UC_CancelReq
+UC_LoginUser -- UC_ViewReqs
+
+UC_LoginAdmin -- UC_ViewSoftList
+UC_LoginAdmin -- UC_ViewSoft
+UC_LoginAdmin -- UC_SearchSoft
+UC_LoginAdmin -- UC_AddSoft
+UC_LoginAdmin -- UC_DeleteSoft
+UC_LoginAdmin -- UC_AddPC
+UC_LoginAdmin -- UC_DeletePC
+UC_LoginAdmin -- UC_ViewPCList
+UC_LoginAdmin -- UC_AcceptReq
+UC_LoginAdmin -- UC_RejectReq
+UC_LoginAdmin -- UC_CreateAdmin
+
+@enduml
