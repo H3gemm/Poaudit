@@ -1,0 +1,52 @@
+@startuml
+
+skinparam linetype ortho
+
+entity User {
+  *user_id : integer <<PK>>
+  --
+  *user_name : text
+}
+
+entity Admin {
+  *admin_id : integer <<PK>>
+  --
+  *admin_name : text
+}
+
+entity PC {
+  *pc_id : integer <<PK>>
+  --
+  *pc_name : text
+  pc_place : text
+}
+
+entity Developer {
+  *developer_id : integer <<PK>>
+  --
+  *developer_name : text
+}
+
+entity Software {
+  *software_id : integer <<PK>>
+  --
+  *software_name : text
+  developer_id : integer <<FK>>
+}
+
+entity Order {
+  *order_id : integer <<PK>>
+  --
+  *user_id : integer <<FK>>
+  *pc_id : integer <<FK>>
+  *software : integer <<FK>>
+  processed_by_admin : integer <<FK>>
+}
+
+User      ||..o{ Order
+Admin     |o..o{ Order
+PC        ||..o{ Order
+Software  ||..o{ Order
+Developer |o..o{ Software
+
+@enduml
